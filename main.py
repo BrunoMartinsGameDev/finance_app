@@ -1,9 +1,15 @@
 import sys
-from PySide6.QtWidgets import QApplication, QLabel
+from PySide6.QtWidgets import QApplication
+from ui.main_window import MainWindow
 
-app = QApplication(sys.argv)
-label = QLabel("Finance App - Base OK")
-label.resize(300, 100)
-label.show()
+def main():
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
 
-sys.exit(app.exec())
+if __name__ == "__main__":
+    main()
+    # from database.db import Database
+    # db = Database()
+    # print(f"Database initialized at: {db.db_path}")
