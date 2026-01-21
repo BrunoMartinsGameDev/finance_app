@@ -94,9 +94,18 @@ class MainWindow(QMainWindow):
             row_number = self.table.rowCount()
             self.table.insertRow(row_number)
             for column, value in enumerate(astuple(transaction)):
+                if column == 0:
+                    continue # Pula o ID
                 print(value)
-                self.table.setItem(row_number, column,
+                self.table.setItem(row_number, column-1,
                                    QTableWidgetItem(str(value)))
 
         balance = self.service.get_balance()
         self.balance_label.setText(f"Saldo: R$ {balance:.2f}")
+        if balance > 0 :
+            color = "green"
+        elif balance < 0:
+            color = "red"
+        else:
+            color = "gray"
+        self.balance_label.setStyleSheet(f"font-size: 24px; font-weight: bold; color: {color};")

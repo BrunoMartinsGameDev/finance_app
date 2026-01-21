@@ -53,6 +53,7 @@ class Database:
         transactions = []
         for row in rows:
             transaction = Transaction(
+                id=row[0],
                 type=row[1],
                 description=row[2],
                 category=row[3],
